@@ -1,4 +1,4 @@
-# Armazenamento de exercícios
+# Exercise storage
 
-### Criei esse repositório aprenas para guardar um exercício feito durante o curso da onebitcode
+### I created this learning repository to store exercises/challenges designed to exercise programming logic, from basic to advanced.
 
