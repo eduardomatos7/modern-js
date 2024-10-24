@@ -12,3 +12,4 @@ module.exports = class Product{
         this.inStock -= quantity
     }
 }
+
