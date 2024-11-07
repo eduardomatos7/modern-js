@@ -37,7 +37,7 @@ function addMember(spaceship) {
 }
 function sendSpaceship(spaceshipSended) {
     const spaceship = spaceships.find(element => element.name === spaceshipSended);
-    const amount = Math.round(spaceship.crewLimit / 3);
+    const amount = Math.floor(spaceship.crewLimit / 3);
     if (spaceship) {
         if (spaceship.crew.length < amount) {
             alert("Quantidade de tripulantes insuficiente para missão");
@@ -53,35 +53,24 @@ function sendSpaceship(spaceshipSended) {
 }
 function listSpaceships() {
     if (spaceships.length > 0) {
+        let listnaves = 'Naves registradas:\n';
         spaceships.forEach(element => {
-            let status;
-            if (element.inMission) {
-                status = "Sim";
-            }
-            else {
-                status = "Não";
-            }
-            let passenger;
+            listnaves += `
+            Nome da nave: ${element.name}
+            Piloto: ${element.pilot}
+            Limite de passageiros: ${element.crewLimit}
+            Em missão: ${element.inMission ? 'Sim' : 'Não'}
+            Passageiros: ${element.crew.length}
+            `;
             if (element.crew.length > 0) {
-                passenger = element.crew.map(member => `- Nome: ${member[0]} 
-                    - Idade: ${member[1]}`).join("\n");
-            }
-            else {
-                passenger = "Nenhum passageiro";
-            }
-            if (element) {
-                alert(`Nome da nave: ${element.name}
-                Piloto: ${element.pilot}
-                Limite de passageiros: ${element.crewLimit}
-                Passageiros: 
-                ${passenger}
-                Em missão: ${status}
-                `);
-            }
-            else {
-                "Não existe nenhuma nave cadastrada";
+                element.crew.forEach((crew) => {
+                    listnaves += `
+                    - ${crew[0]}\n
+                    `;
+                });
             }
         });
+        alert(listnaves);
     }
     else {
         alert("Nenhuma nave para mostrar");
@@ -133,7 +122,7 @@ function main() {
                 condition = false;
                 break;
             default:
-                "Selecione uma opção válida!";
+                alert("Selecione uma opção válida!");
                 break;
         }
     }
